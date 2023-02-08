@@ -6,18 +6,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const client = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
       refetchOnWindowFocus: false,
-      // staleTime: 1000 * 60 * 5,
     },
     mutations: {
       retry: false,
       refetchOnWindowFocus: false,
-      // staleTime: 1000 * 60 * 5,
     },
   },
 });

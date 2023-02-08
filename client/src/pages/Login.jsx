@@ -5,6 +5,7 @@ import { Loader, TextInput } from "../components";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUserFn } from "../api/authAPI";
 import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,8 +19,10 @@ const Login = () => {
   const { mutate: loginUser, isLoading } = useMutation({
     mutationFn: loginUserFn,
     onSuccess: () => {
-      client.invalidateQueries(["user"]);
-      navigate(from);
+      client.invalidateQueries(["user"]).then(() => {
+        navigate(from);
+        toast.success("Log In successful");
+      });
     },
   });
 

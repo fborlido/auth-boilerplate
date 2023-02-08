@@ -1,13 +1,15 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useEffect } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { getUserFn } from "../api/authAPI";
+import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
-import Loader from "./Loader";
 
 const Protected = () => {
   const location = useLocation();
   const auth = useAuth();
+
+  useEffect(() => {
+    if (!auth.user) toast.error("Unauthorized");
+  }, []);
 
   if (!auth.user) return <Navigate to="/login" state={{ from: location }} />;
   else return <Outlet />;

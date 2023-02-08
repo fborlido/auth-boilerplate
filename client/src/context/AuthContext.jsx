@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { getUserFn, logoutUserFn } from "../api/authAPI";
 import { Loader } from "../components";
 
@@ -18,6 +19,7 @@ const AuthProvider = ({ children }) => {
     onError: () => {
       setUser(null);
       localStorage.removeItem("user");
+      toast.info("Your session expired");
     },
   });
 
