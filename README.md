@@ -57,6 +57,13 @@ There is an `AppError` class that extends the JavaScript `Error` class, specifyi
   - 401 - Unauthorized
   - 404 - Not found
   - 500 - Database Error
- 
+
 - *Server Errors*
 The server exits with a status code 500. The error is logged on the console.
+
+## Client
+
+The client side of the app uses `ReactJS` set up with `Vite`.
+
+### API communication
+The App comunicates with the server using `axios`, which is set up under `src/api`.
